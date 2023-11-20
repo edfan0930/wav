@@ -4,7 +4,6 @@ import (
 	"embed"
 	"fmt"
 	"log"
-	"path/filepath"
 	"time"
 
 	"github.com/gopxl/beep"
@@ -42,14 +41,14 @@ func InitSpeaker() {
 
 	// 初始化 speaker，仅在开始时调用一次
 	var format beep.Format
-	filePath := filepath.Join("sounds", "english", fileName)
-	f, err := englishSounds.Open(filePath)
+	path := fmt.Sprintf("%s/%s/%s", "sounds", "english", fileName)
+	f, err := englishSounds.Open(path)
 	if err != nil {
-		log.Fatalf("unable to open file %s: %v", filePath, err)
+		log.Fatalf("unable to open file %s: %v", path, err)
 	}
 	_, format, err = wav.Decode(f)
 	if err != nil {
-		log.Fatalf("unable to decode file %s: %v", filePath, err)
+		log.Fatalf("unable to decode file %s: %v", path, err)
 	}
 	f.Close()
 
