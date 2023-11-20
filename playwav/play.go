@@ -2,7 +2,6 @@ package playwav
 
 import (
 	"errors"
-	"fmt"
 	"time"
 
 	"github.com/gopxl/beep"
@@ -30,10 +29,8 @@ func PlayWithMandarinSingle(number int) error {
 
 	fileNames := SingleWithMandarin(number)
 	var streamers []beep.Streamer
-	fmt.Println("mandarin buffers", mandarinBuffers)
-	fmt.Println("names", fileNames)
+
 	for _, fileName := range fileNames {
-		fmt.Println("file name", fileName)
 		v, exist := mandarinBuffers[fileName]
 		if !exist {
 			return errors.New("wrong file name")
