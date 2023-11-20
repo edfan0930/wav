@@ -2,6 +2,7 @@ package playwav
 
 import (
 	"embed"
+	"fmt"
 	"log"
 	"path/filepath"
 	"time"
@@ -90,9 +91,10 @@ func InitHakkaBuffers(fileNames []string) error {
 func LoadBuffersFromFS(language string, fs *embed.FS, buffers map[string]*beep.Buffer, fileNames []string) error {
 
 	for _, fileName := range fileNames {
-		filePath := filepath.Join("sounds", language, fileName)
 
-		f, err := fs.Open(filePath)
+		path := fmt.Sprintf("%s/%s/%s", "sounds", language, fileName)
+
+		f, err := fs.Open(path)
 		if err != nil {
 			return err
 		}
