@@ -68,12 +68,15 @@ func InitMandarinBuffers(fileNames []string) error {
 }
 
 func InitEnglishBuffers(fileNames []string) error {
+	englishBuffers = make(map[string]*beep.Buffer)
 
 	err := LoadBuffersFromFS("english", &englishSounds, englishBuffers, fileNames)
 
 	return err
 }
 func InitHokkienBuffers(fileNames []string) error {
+
+	hokkienBuffers = make(map[string]*beep.Buffer)
 
 	err := LoadBuffersFromFS("hokkien", &hokkienSounds, hokkienBuffers, fileNames)
 
@@ -82,6 +85,7 @@ func InitHokkienBuffers(fileNames []string) error {
 
 func InitHakkaBuffers(fileNames []string) error {
 
+	hakkaBuffers = make(map[string]*beep.Buffer)
 	err := LoadBuffersFromFS("hakka", &hakkaSounds, hakkaBuffers, fileNames)
 
 	return err

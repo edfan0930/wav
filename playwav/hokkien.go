@@ -43,7 +43,7 @@ func PutMiddle(n *[]string) {
 		}
 	}
 
-	if length >= 3 {
+	if length >= 3 && (number[length-3] != "0") {
 
 		number = append(number[:length-2], append([]string{"佰"}, number[length-2:]...)...)
 	}

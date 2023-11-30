@@ -25,6 +25,98 @@ import (
 	playAndWait(shot)
 } */
 
+// PlayWithEnglish play with english
+// @number the call number
+// @from a call from the counter
+func PlayWithEnglish(number, from int) error {
+
+	fileNames := EnglishRules(number, from)
+	var streamers []beep.Streamer
+
+	for _, fileName := range fileNames {
+		v, exist := englishBuffers[fileName]
+		if !exist {
+			return errors.New("wrong file name")
+		}
+
+		streamer := v.Streamer(0, v.Len())
+		streamers = append(streamers, streamer)
+	}
+
+	playAndWait(streamers)
+	return nil
+
+}
+
+// PlayWithHokkien play with hokkien
+// @number the call number
+// @from a call from the counter
+func PlayWithHokkien(number, from int) error {
+
+	fileNames := HokkienRules(number, from)
+	var streamers []beep.Streamer
+
+	for _, fileName := range fileNames {
+		v, exist := hokkienBuffers[fileName]
+		if !exist {
+			return errors.New("wrong file name")
+		}
+
+		streamer := v.Streamer(0, v.Len())
+		streamers = append(streamers, streamer)
+	}
+
+	playAndWait(streamers)
+	return nil
+
+}
+
+// PlayWithHakka play with hakka
+// @number the call number
+// @from a call from the counter
+func PlayWithHakka(number, from int) error {
+
+	fileNames := HakkaRules(number, from)
+	var streamers []beep.Streamer
+
+	for _, fileName := range fileNames {
+		v, exist := hakkaBuffers[fileName]
+		if !exist {
+			return errors.New("wrong file name")
+		}
+
+		streamer := v.Streamer(0, v.Len())
+		streamers = append(streamers, streamer)
+	}
+
+	playAndWait(streamers)
+	return nil
+
+}
+
+// PlayWithMandarin play with mandarin
+// @number the call number
+// @from a call from the counter
+func PlayWithMandarin(number, from int) error {
+
+	fileNames := MandarinRules(number, from)
+	var streamers []beep.Streamer
+
+	for _, fileName := range fileNames {
+		v, exist := mandarinBuffers[fileName]
+		if !exist {
+			return errors.New("wrong file name")
+		}
+
+		streamer := v.Streamer(0, v.Len())
+		streamers = append(streamers, streamer)
+	}
+
+	playAndWait(streamers)
+	return nil
+
+}
+
 func PlayWithMandarinSingle(number int) error {
 
 	fileNames := SingleWithMandarin(number)
